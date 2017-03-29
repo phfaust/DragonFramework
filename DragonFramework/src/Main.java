@@ -18,6 +18,8 @@ public class Main {
 	
     public static void startgame() throws Exception {
     	//INITIALIZE
+//    	remote repo test
+    	
     	isRunning = true;
     	df.in("Go Room1");
 
