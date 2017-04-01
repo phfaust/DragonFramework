@@ -79,12 +79,15 @@ public class DragonFramework {
 	    					System.out.println(currentRoom);
 	    					break;
 	    				case "Room3":
+	    					System.out.println("You can choose to 'attack' or 'look'");
 	    					System.out.println(currentRoom);
 	    					break;
 	    				case "Room4":
+	    					System.out.println("You can choose to 'answer' or 'look'");
 	    					System.out.println(currentRoom);
 	    					break;
 	    				case "Room5":
+//	    					System.out.println("You can choose to 'answer' or 'look'");
 	    					System.out.println(currentRoom);
 	    					break;
 	    			}    			
@@ -121,7 +124,7 @@ public class DragonFramework {
 	public void process(String currentRoom, int gameState, String command) throws Exception{
 		this.hm = rcm.processRoom(currentRoom, gameState, command);
     	System.out.println(this.hm.get("message") + "\n");
-	  	gameState = (Integer) this.hm.get("status");
+	  	this.gameState = (Integer) this.hm.get("status");
 	}
 
 }
