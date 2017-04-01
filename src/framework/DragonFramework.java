@@ -76,6 +76,9 @@ public class DragonFramework {
 	    			System.out.println("Hint:");
 	    			System.out.println("gatestate" + gameState);
 	    			switch(currentRoom){
+	    				case "Room1":
+	    					System.out.println("You might want to move rooms now");
+	    			
 	    				case "Room2":
 //	    					when all tasks have been done by that room
 //	    					
