@@ -74,25 +74,42 @@ public class DragonFramework {
 	    			//hint logic here;
 	    			System.out.println("You are in: " + currentRoom);
 	    			System.out.println("Hint:");
+	    			System.out.println("gatestate" + gameState);
 	    			switch(currentRoom){
 	    				case "Room2":
 //	    					when all tasks have been done by that room
-//	    					System.out.println("gatestate" + gameState);
+//	    					
 	    					if(gameState == 15){
 	    						System.out.println("You might want to move rooms now.");
+	    					} else if(gameState == 7){
+	    						System.out.println("Maybe dig?");
 	    					} else {
 	    						System.out.println("You can choose to 'swim' or 'look'");
 	    					}
 	    					break;
 	    				case "Room3":
-	    					System.out.println("You can choose to 'attack' or 'look'");
+	    					if(gameState == 111 || gameState == 127){
+	    						System.out.println("You might want to move rooms now.");
+	    					} else if (gameState == 63 || gameState == 57){
+	    						System.out.println("Open chest?");
+	    						
+	    					} else {
+	    						System.out.println("Looks like we can get by the dragon without bothering it."
+		    							+ " Sometimes it's wiser to avoid conflict.");
+		    					System.out.println("You can choose to 'attack' or 'look'");
+	    					}
 	    					break;
 	    				case "Room4":
-	    					System.out.println("You can choose to 'answer' or 'look'");
+	    					if(gameState == 239 || gameState == 255){
+	    						System.out.println("You might want to move rooms now.");
+	    					} else {
+	    						System.out.println("2 _ _ , 7 _ _ ");
+		    					System.out.println("You can choose to 'answer' or 'look'");
+	    					}
+	    					 
 	    					break;
 	    				case "Room5":
-	    					
-	    					System.out.println(currentRoom);
+	    					System.out.println("Now what were the words again? ... ");
 	    					break;
 	    			}    			
 	    			break;
