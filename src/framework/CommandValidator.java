@@ -36,7 +36,7 @@ public class CommandValidator implements CommandHandler {
 					reply ="Game has not started yet.";
 					return false;
 				} else if(args.length < 2) {
-					reply = "No correct number of arguments";
+					reply = "No correct number of arguments.";
 					return false;
 				}
 				else if(args[1].equalsIgnoreCase(df.currentRoom)) {

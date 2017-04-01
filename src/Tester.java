@@ -8,7 +8,7 @@ public class Tester {
 
 		RoomCommandManager rm = new RoomCommandManager();
 		int state = 0;
-		String currentRoom = "Room2";
+		String currentRoom = "Room3";
 		
 		while(true){
 				

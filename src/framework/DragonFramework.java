@@ -70,8 +70,24 @@ public class DragonFramework {
 	    			break;
 
 	    		case "hint":
-	    			System.out.println("Yay hint but this command is not implemented yet. \n");
+	    			//System.out.println("Yay hint but this command is not implemented yet. \n");
 	    			//hint logic here;
+	    			System.out.println("Here are your list of commands:");
+	    			switch(currentRoom){
+	    				case "Room2":
+	    					System.out.println("You can choose to 'swim' or 'look'");
+	    					System.out.println(currentRoom);
+	    					break;
+	    				case "Room3":
+	    					System.out.println(currentRoom);
+	    					break;
+	    				case "Room4":
+	    					System.out.println(currentRoom);
+	    					break;
+	    				case "Room5":
+	    					System.out.println(currentRoom);
+	    					break;
+	    			}    			
 	    			break;
 
 	    		default:	
@@ -81,7 +97,7 @@ public class DragonFramework {
 	    			} else if (ins[0].equalsIgnoreCase("openChest")){
 	    				command = "openChest";
 	    			} else {
-	    				for (String i : ins) command += i + " "; //command plus multiple parrameters
+	    				for (String i : ins) command += i + " "; //command plus multiple parameters
 	  				}
 
 	  				process(currentRoom, gameState, command);		
