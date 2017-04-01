@@ -2,15 +2,16 @@ package framework;
 import java.lang.reflect.Method;
 
 
-@CommandAnnotation(target=Start.class)
+@CommandAnnotation(target=User.class)
 public class UserValidator implements CommandHandler{
 
 	@Override
 	public void process(Object o, Object arg, Method m, DragonFramework df) throws Exception {
-		// TODO Auto-generated method stub
-		
+		String[] args = ((String) arg).split(" ");
+		if(args.length < 1){
+			System.out.println(args.length);
+			System.out.println("Input a username.");
+			throw new RuntimeException();
+		}
 	}
-
-
-	
 }

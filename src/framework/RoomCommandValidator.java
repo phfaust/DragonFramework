@@ -17,8 +17,8 @@ public class RoomCommandValidator
 		for (String s : allResults) {
 			try {
 				Class<?> c = Class.forName(s);
-				CommandAnnotation va = (CommandAnnotation) c.getAnnotation(CommandAnnotation.class);
-				map.put(va.target(), (CommandHandler) c.newInstance());
+				CommandAnnotation ca = (CommandAnnotation) c.getAnnotation(CommandAnnotation.class);
+				map.put(ca.target(), (CommandHandler) c.newInstance());
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

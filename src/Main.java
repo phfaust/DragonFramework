@@ -11,9 +11,8 @@ public class Main {
 
 //	commit tester
 	public static void main(String[] args) throws Exception {
-		System.out.println("You are trap in this maze.\nSolve the puzzles and figure a way out before the dragon turns you in to ashes. \n");		
+		System.out.println("You are trap in this maze.\nSolve the puzzles and figure a way out before the dragon turns you in to ashes. \nUse command 'Register (name)' to load/create a game.\n");		
 		startgame();
-		
 	}	
 	
     public static void startgame() throws Exception {
@@ -21,14 +20,11 @@ public class Main {
 //    	remote repo test
     	
     	isRunning = true;
-    	df.in("Go Room1");
-
     	//RUN
     	while(isRunning){
 	    	String in = sc.nextLine();
-	    	if(in.equals("Exit")){
-	    		isRunning = false;
-	    		System.out.println("Game Exited");
+	    	if(in.toLowerCase().startsWith("register")){
+	    		df.register(in);
 	    	}
 	    	else {
 	    		if(!df.in(in)){

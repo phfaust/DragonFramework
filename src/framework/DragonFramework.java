@@ -21,6 +21,29 @@ public class DragonFramework {
 		s = new SessionHandler();		
 	}
 	
+	public void register(String input) throws Exception{
+		RoomCommandValidator v = new RoomCommandValidator();
+		Class<?> c = SessionHandler.class;
+		try {
+			String[] ins = input.split(" ");
+			String temp = "";
+			for(int i = 1; i < ins.length; i++) temp += ins[i] + " ";
+			
+			s.setUsername(temp);
+			Field field = c.getDeclaredField("username");
+			field.setAccessible(true);
+			v.validate(s, (String) field.get(s), c.getMethod("setUsername", String.class), this);
+			
+			user = temp;
+			System.out.println("Registered user " + user + "\nInput 'Start' to start game.\n");
+			
+			//IMPLEMENT LOADING AND SAVING GAME HERE
+			
+		} catch (RuntimeException e){
+			System.out.println("ERROR: User not registered.");
+		}
+	}
+	
 	public boolean in(String input) throws Exception{
 		RoomCommandValidator v = new RoomCommandValidator();
 		Class<?> c = SessionHandler.class;
@@ -44,12 +67,6 @@ public class DragonFramework {
 
 	    		case "start":
 					process("Room1", 0, "checkRoom");
-	    			break;
-
-	    		case "register":
-	    			user = "";
-	    			for(int i = 1; i < ins.length; i++) user += ins[i] + " ";
-	    			System.out.println("Registered user " + user + "\nInput 'Start' to start game.\n");
 	    			break;
 
 	    		case "hint":

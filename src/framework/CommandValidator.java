@@ -10,7 +10,7 @@ public class CommandValidator implements CommandHandler {
 	@Override
 	public void process(Object o, Object arg, Method m, DragonFramework df) throws Exception {	
 		if(!check((String) arg, df)){
-			System.out.println(reply + "\n");
+			System.out.println(reply);
 			throw new RuntimeException();
 		}
 		m.setAccessible(true);
@@ -20,13 +20,6 @@ public class CommandValidator implements CommandHandler {
 		String[] args = arg.split(" ");
 		reply = "";
 		switch(args[0].toLowerCase()) {
-			case "register":
-				if(args.length < 2){
-					reply = "Input a username.";
-					return false;
-				}
-				return true;
-
 			case "start":
 				if(df.user.equals("")) {
 					reply = "Register first.";
