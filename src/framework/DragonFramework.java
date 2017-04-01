@@ -21,6 +21,7 @@ public class DragonFramework {
 		s = new SessionHandler();		
 	}
 	
+	//USER
 	public void register(String input) throws Exception{
 		RoomCommandValidator v = new RoomCommandValidator();
 		Class<?> c = SessionHandler.class;
@@ -44,6 +45,7 @@ public class DragonFramework {
 		}
 	}
 	
+	//COMMAND
 	public boolean in(String input) throws Exception{
 		RoomCommandValidator v = new RoomCommandValidator();
 		Class<?> c = SessionHandler.class;
@@ -105,7 +107,7 @@ public class DragonFramework {
 	public void process(String currentRoom, int gameState, String command) throws Exception{
 		this.hm = rcm.processRoom(currentRoom, gameState, command);
     	System.out.println(this.hm.get("message") + "\n");
-	  	gameState = (Integer) this.hm.get("status");
+	  	this.gameState = (Integer) this.hm.get("status");
 	}
 
 }
