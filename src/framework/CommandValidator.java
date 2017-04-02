@@ -43,51 +43,57 @@ public class CommandValidator implements CommandHandler {
 						return false;
 					}
 					break;
+					
 				case "swim":       
 					if(df.isState(4)) {
 						reply ="You see nothing of interest as you swam.";
 						return false;
 					}
 					break;
+					
 				case "dig":			
 					if(df.isState(2) && df.isState(8)) {
 						reply ="You already dug.";
 						return false;
 					}
 					break;
+					
 				case "attack":		
 					if(df.isState(16) && df.currentRoom.equals("Room3")) {
 						reply ="You can't attack nothing, silly.";
 						return false;
 					} 
 					break;
+					
 				case "openchest":	
 					if(df.isState(64)) {
 						reply ="What chest?";
 						return false;
 					}
 					break;
+					
 				case "answer": 		
 					if(df.isState(128)) {
 						reply ="You already answered correctly!";
 						return false;
 					}
 					break;
-				}
+
+				case "start":
+					reply = "The game already started.";
+					return false;
+					
+			}
 			return true;
 		}
 		
-		else if(args[0].equals("start")){
+		else if(args[0].toLowerCase().equals("start")){
 			if(df.user.equals("")) {
 				reply = "Register first.";
-				return false;
-			} else if(!df.currentRoom.equals("")) {
-				reply = "The game already started.";
 				return false;
 			}
 			df.start = true;
 			return true;
-			
 		} else {
 			reply ="Game has not started yet.";
 			return false;

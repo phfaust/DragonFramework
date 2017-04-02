@@ -136,7 +136,9 @@ public class DragonFramework {
 			case "Room3":
 				if(isState(64)){
 					System.out.println("You might want to move rooms now.");
-				} else if (isState(32)){
+				} else if(isState(16)){
+					System.out.println("You can 'look'");
+				}else if (isState(32)){
 					System.out.println("Open chest?");
 				} else {
 					System.out.println("Looks like we can get by the dragon without bothering it."
