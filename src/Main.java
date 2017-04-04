@@ -23,6 +23,7 @@ public class Main {
     	//RUN
     	while(isRunning){
 	    	String in = sc.nextLine();
+	    	in = in.trim();
 	    	if(in.toLowerCase().startsWith("register")){
 	    		df.register(in);
 	    	}

@@ -1,6 +1,7 @@
 package framework;
 import room.*;
 import java.lang.reflect.*;
+import java.util.Arrays;
 import java.util.HashMap;
 
 public class DragonFramework {
@@ -12,10 +13,11 @@ public class DragonFramework {
 	int gameState;
 	boolean start = false;
 	HashMap<String, Object> hm;
+	static String input;
 	
 	public DragonFramework(){
 		rcm = new RoomCommandManager();
-		s = new SessionHandler();		
+		s = new SessionHandler();	
 	}
 	
 	//USER
@@ -23,12 +25,14 @@ public class DragonFramework {
 		RoomCommandValidator v = new RoomCommandValidator();
 		Class<?> c = SessionHandler.class;
 		try {
-			
 			//VALIDATION
-			String[] ins = input.split(" ");
-			String temp = "";
-			for(int i = 1; i < ins.length; i++) temp += ins[i] + " ";
+			String[] ins = regex(input);
 			
+//			System.out.println(Arrays.toString(ins));
+			
+//			System.out.println(input);
+			String temp = ins[1];
+				
 			s.setUsername(temp);
 			Field field = c.getDeclaredField("username");
 			field.setAccessible(true);
@@ -41,6 +45,7 @@ public class DragonFramework {
 			//implement saving and loading game here
 			
 		} catch (RuntimeException e){
+//			e.printStackTrace();
 			System.out.println("ERROR: User not registered.");
 		}
 	}
@@ -48,17 +53,21 @@ public class DragonFramework {
 	//COMMAND
 	public boolean in(String input) throws Exception{
 		RoomCommandValidator v = new RoomCommandValidator();
+		DragonFramework.input = input;
 		Class<?> c = SessionHandler.class;
 		try {
+			
+			String[] ins = regex(input);
 			s.setCommand(input);
-			String[] ins = input.split(" ");
-			ins[0] = ins[0].toLowerCase();
-		
+
 			//VALIDATION
 			Field field = c.getDeclaredField("command");
 			field.setAccessible(true);
 			v.validate(s, (String) field.get(s), c.getMethod("setCommand", String.class), this);
 			
+			
+			ins[0] = ins[0].toLowerCase();
+		
 			//PROCESS COMMANDS
 	    	switch(ins[0]){
 	    		case "go": 
@@ -160,5 +169,21 @@ public class DragonFramework {
 				break;
 		}    			
 	}
+	
+	public String[] regex(String s){
+		String [] a = null;
+//		System.out.println("Trimmed:" + s);
+		 if(s.matches("(\\w+)")){
+			a = s.split("\\s\\s*");
+			System.out.println(Arrays.toString(a));
+				
+		} else {
+			a = s.split("\\s\\s*", 2);
+			System.out.println(Arrays.toString(a));
+		}		
+		return a;
+	}
+	
+
 
 }
