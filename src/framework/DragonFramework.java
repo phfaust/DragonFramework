@@ -97,6 +97,7 @@ public class DragonFramework {
 	    			
 	    		case "exit":
 	    			save();
+	    			start = false;
 	    			return false;
 	    			
 	    		default:	
