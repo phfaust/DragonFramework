@@ -1,8 +1,8 @@
 package framework;
 import room.*;
 import java.lang.reflect.*;
-import java.util.Arrays;
 import java.util.HashMap;
+import app.*;
 
 public class DragonFramework {
 	RoomCommandManager rcm;
@@ -14,10 +14,12 @@ public class DragonFramework {
 	boolean start = false;
 	HashMap<String, Object> hm;
 	static String input;
+	EntryPoint entry;
 	
-	public DragonFramework(){
+	public DragonFramework(EntryPoint entry){
 		rcm = new RoomCommandManager();
 		s = new SessionHandler();	
+		this.entry = entry;
 	}
 	
 	//USER
@@ -27,10 +29,6 @@ public class DragonFramework {
 		try {
 			//VALIDATION
 			String[] ins = regex(input);
-			
-//			System.out.println(Arrays.toString(ins));
-			
-//			System.out.println(input);
 			String temp = ins[1];
 				
 			s.setUsername(temp);
@@ -40,12 +38,24 @@ public class DragonFramework {
 			
 			//SAVING AND LOADING USER
 			user = temp;
-			System.out.println("Registered user " + user + "\nInput 'Start' to start game.\n");
 			
 			//implement saving and loading game here
+			app.entity.User u  = entry.findUser(user);
+			if(u != null){
+				currentRoom = u.getRoom();
+				gameState = u.getStatus();
+				System.out.println("Loaded game for user " + temp);
+			}else {
+				u = new app.entity.User();
+				currentRoom = "Room1";
+				entry.createUser(u, user, currentRoom, gameState);
+				System.out.println("Created user " + temp);
+			}
+			System.out.println("\nInput 'Start' to start game.\n "
+					+ "Use command 'exit' to save and exit game\n");
 			
 		} catch (RuntimeException e){
-//			e.printStackTrace();
+			e.printStackTrace();
 			System.out.println("ERROR: User not registered.");
 		}
 	}
@@ -78,13 +88,16 @@ public class DragonFramework {
 	    			break;
 
 	    		case "start":
-	    			this.currentRoom = "Room1";
-					process("Room1", 0, "checkRoom");
+					process(currentRoom, gameState, "checkRoom");
 	    			break;
 
 	    		case "hint":
 	    			hint();
 	    			break;
+	    			
+	    		case "exit":
+	    			save();
+	    			return false;
 	    			
 	    		default:	
 	    			command = "";
@@ -107,9 +120,16 @@ public class DragonFramework {
 		}
 		//CHECK IF DEAD TO END GAME
 		if((gameState & 256) == 256){
+			currentRoom = "";
+			gameState = 0;
+			save();
 			return false;
 		} else {return true;} 
 
+	}
+
+	private void save() {
+		entry.saveUser(entry.findUser(user), currentRoom, gameState);
 	}
 
 	//process room
@@ -172,14 +192,10 @@ public class DragonFramework {
 	
 	public String[] regex(String s){
 		String [] a = null;
-//		System.out.println("Trimmed:" + s);
 		 if(s.matches("(\\w+)")){
-			a = s.split("\\s\\s*");
-			System.out.println(Arrays.toString(a));
-				
+			a = s.split("\\s\\s*");				
 		} else {
 			a = s.split("\\s\\s*", 2);
-			System.out.println(Arrays.toString(a));
 		}		
 		return a;
 	}

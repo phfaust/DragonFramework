@@ -38,21 +38,21 @@ public class CommandValidator implements CommandHandler {
 					break; 
 					
 				case "takesword":	
-					if(df.isState(4)) {
+					if(df.isState(4) && df.currentRoom.equals("Room2")) {
 						reply ="You already took the sword.";
 						return false;
 					}
 					break;
 					
 				case "swim":       
-					if(df.isState(4)) {
+					if(df.isState(4) && df.currentRoom.equals("Room2")) {
 						reply ="You see nothing of interest as you swam.";
 						return false;
 					}
 					break;
 					
 				case "dig":			
-					if(df.isState(2) && df.isState(8)) {
+					if(df.isState(2) && df.isState(8) && df.currentRoom.equals("Room2")) {
 						reply ="You already dug.";
 						return false;
 					}
@@ -65,15 +65,15 @@ public class CommandValidator implements CommandHandler {
 					} 
 					break;
 					
-				case "openchest":	
-					if(df.isState(64)) {
+				case "openchest" :	
+					if(df.isState(64) && df.currentRoom.equals("Room3")) {
 						reply ="What chest?";
 						return false;
 					}
 					break;
 					
 				case "answer": 		
-					if(df.isState(128)) {
+					if(df.isState(128) && df.currentRoom.equals("Room4")) {
 						reply ="You already answered correctly!";
 						return false;
 					}

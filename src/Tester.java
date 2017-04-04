@@ -23,8 +23,8 @@ public class Tester {
 			}
 			
 			state = (int) output.get("status");
+			sc.close();
 		}
-		
 	}
 
 }
