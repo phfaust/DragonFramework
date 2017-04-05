@@ -127,3 +127,4 @@ java.net.UnknownHostException: services.gradle.org
 '
 2017-04-05 23:06:32,051 [Worker-0] WARN  org.eclipse.jgit.util.FS - Exception caught during execution of command '[git, config, --system, --edit]' in 'C:\USERS\IRENE\APPDATA\LOCAL\PROGRAMS\GIT\BIN', return code '128', error message 'fatal: Could not switch to '/etc/': No such file or directory
 '
+2017-04-05 23:11:01,643 [main] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache file is not out-of-date. No remote download required.
