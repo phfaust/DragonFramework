@@ -61,11 +61,11 @@ public class DragonFramework {
 	}
 	
 	//COMMAND
-	public boolean in(String input) throws Exception{
-		RoomCommandValidator v = new RoomCommandValidator();
-		DragonFramework.input = input;
-		Class<?> c = SessionHandler.class;
+	public boolean in(String input) {
 		try {
+			RoomCommandValidator v = new RoomCommandValidator();
+			DragonFramework.input = input;
+			Class<?> c = SessionHandler.class;
 			
 			String[] ins = regex(input);
 			s.setCommand(input);
@@ -113,11 +113,12 @@ public class DragonFramework {
 	  		}
 
 		} catch (Exception e){
-			if(e instanceof NullPointerException || e instanceof RuntimeException){
-				System.out.println("Invalid command. \n");
-			} else {
-//				e.printStackTrace();
-			}
+//			if(e instanceof NullPointerException || e instanceof RuntimeException){
+//				
+//			} else {
+////				e.printStackTrace();
+//			}
+			System.out.println("Invalid command. \n");
 		}
 		//CHECK IF DEAD TO END GAME
 		if((gameState & 256) == 256){
