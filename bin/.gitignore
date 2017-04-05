@@ -1,0 +1,7 @@
+/applicationContext-jpa.xml
+/applicationContext.xml
+/db.properties
+/persistence.xml
+/log4j.properties
+/framework/
+/log4j.xml
