@@ -116,7 +116,7 @@ public class DragonFramework {
 			if(e instanceof NullPointerException || e instanceof RuntimeException){
 				System.out.println("Invalid command. \n");
 			} else {
-				e.printStackTrace();
+//				e.printStackTrace();
 			}
 		}
 		//CHECK IF DEAD TO END GAME

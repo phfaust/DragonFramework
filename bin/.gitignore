@@ -1,4 +1,7 @@
-/Main.class
+/applicationContext-jpa.xml
+/applicationContext.xml
+/db.properties
+/persistence.xml
+/log4j.properties
 /framework/
-/Tester.class
-/Test.class
+/log4j.xml
