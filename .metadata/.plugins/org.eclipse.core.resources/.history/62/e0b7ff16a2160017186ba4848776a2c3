@@ -1,0 +1,18 @@
+package framework;
+import java.lang.reflect.Method;
+
+
+@CommandAnnotation(target=Start.class)
+public class UserValidator implements CommandHandler{
+
+	@Override
+	public void process(Object o, Object arg, Method m, DragonFramework df) throws Exception {
+		String[] args = (String) arg.split(" ");
+		switch(args[0].toLowerCase()) {
+			case "register":
+				if(args.length < 2){
+					reply = "Input a username.";
+			
+				}
+	}
+}

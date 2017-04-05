@@ -1,0 +1,38 @@
+package app;
+import java.util.Scanner;
+import framework.DragonFramework;
+
+public class Main {
+
+	static boolean isRunning = false;
+	static Scanner sc = new Scanner(System.in);
+	static DragonFramework df;
+	
+	public Main(EntryPoint entry){
+		df = new DragonFramework(entry);
+	}
+	public void run() throws Exception {
+		System.out.println("You are trap in this maze.\nSolve the puzzles and figure a way out before the dragon turns you in to ashes. \nUse command 'Register (name)' to load/create a game.\n");		
+		startgame();
+	}	
+	
+    public void startgame() throws Exception {
+    	//INITIALIZE    	
+    	isRunning = true;
+    	//RUN
+    	while(isRunning){
+	    	String in = sc.nextLine();
+	    	in = in.trim();
+	    	if(in.toLowerCase().startsWith("register")){
+	    		df.register(in);
+	    	}
+	    	else {
+	    		if(!df.in(in)){
+	    			isRunning =  false;
+	    			System.out.println("Game Over");
+	    		}
+	    	}
+    	}
+    }
+			
+}

@@ -1,0 +1,20 @@
+import java.lang.reflect.Method;
+
+import framework.CommandAnnotation;
+import framework.CommandHandler;
+import framework.DragonFramework;
+import framework.Start;
+
+
+@CommandAnnotation(target=Start.class)
+public class StartValidator implements CommandHandler{
+
+	@Override
+	public void process(Object o, String command, Method m, DragonFramework df) throws Exception {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	
+}

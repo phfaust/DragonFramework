@@ -1,0 +1,53 @@
+package app;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import app.entity.User;
+import app.repositories.UserRepository;
+
+import java.util.Scanner;
+
+@Component
+public class EntryPoint {
+
+	@Autowired
+	UserRepository rep;
+	static Scanner sc;
+	
+	//trigger the moment all the object are initialized 
+
+	public void run() throws Exception{
+		/*/sc = new Scanner(System.in);
+		User u = new User();
+		System.out.println("Enter name for user:");
+		createUser(u);
+		
+		SAMPLE QUERY
+			List<User> users = 
+			List<User> users2 = rep.findByAgeGreaterThan(10);
+			List<User> users3 = rep.myQuery();
+			System.out.println(users);
+			System.out.println(users2);
+			System.out.println(users3);
+		/*/
+	}
+	
+	
+	public void createUser(User u, String in, String room, int status){	
+		u.setName(in);
+		u.setRoom(room);
+		u.setStatus(status);
+		rep.save(u);
+		System.out.println("Added user to database");
+	}
+	
+	public User findUser(String name){
+		try {
+			return rep.findOneByName(name);
+		} catch (NullPointerException e) {
+			return null;
+		}
+	}
+	
+}
