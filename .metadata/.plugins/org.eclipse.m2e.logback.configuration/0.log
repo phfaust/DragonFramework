@@ -131,3 +131,13 @@ java.net.UnknownHostException: services.gradle.org
 2017-04-05 23:57:58,715 [Worker-2] WARN  org.eclipse.jgit.util.FS - Exception caught during execution of command '[git, config, --system, --edit]' in 'C:\USERS\IRENE\APPDATA\LOCAL\PROGRAMS\GIT\BIN', return code '128', error message 'fatal: Could not switch to '/etc/': No such file or directory
 '
 2017-04-05 23:59:05,911 [main] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache file is not out-of-date. No remote download required.
+2017-04-06 17:54:06,593 [Worker-2] WARN  org.eclipse.jgit.util.FS - Exception caught during execution of command '[git, config, --system, --edit]' in 'C:\USERS\IRENE\APPDATA\LOCAL\PROGRAMS\GIT\BIN', return code '128', error message 'fatal: Could not switch to '/etc/': No such file or directory
+'
+2017-04-06 17:58:58,141 [Worker-2] WARN  org.eclipse.jgit.util.FS - Exception caught during execution of command '[git, config, --system, --edit]' in 'C:\USERS\IRENE\APPDATA\LOCAL\PROGRAMS\GIT\BIN', return code '128', error message 'fatal: Could not switch to '/etc/': No such file or directory
+'
+2017-04-06 18:18:48,070 [Worker-3] WARN  org.eclipse.jgit.util.FS - Exception caught during execution of command '[git, config, --system, --edit]' in 'C:\USERS\IRENE\APPDATA\LOCAL\PROGRAMS\GIT\BIN', return code '128', error message 'fatal: Could not switch to '/etc/': No such file or directory
+'
+2017-04-06 18:42:44,857 [Worker-19] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache file is not out-of-date. No remote download required.
+2017-04-06 18:48:36,183 [Worker-2] WARN  org.eclipse.jgit.util.FS - Exception caught during execution of command '[git, config, --system, --edit]' in 'C:\USERS\IRENE\APPDATA\LOCAL\PROGRAMS\GIT\BIN', return code '128', error message 'fatal: Could not switch to '/etc/': No such file or directory
+'
+2017-04-06 18:48:44,933 [main] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache file is not out-of-date. No remote download required.

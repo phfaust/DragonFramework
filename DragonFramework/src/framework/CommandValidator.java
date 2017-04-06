@@ -86,7 +86,13 @@ public class CommandValidator implements CommandHandler {
 			}
 			return true;
 		}
-		
+		else if(args[0].toLowerCase().equals("exit")){
+			if(df.user.equals("")) {
+				reply = "Register first.";
+				return false;
+			}
+			return true;
+		}
 		else if(args[0].toLowerCase().equals("start")){
 			if(df.user.equals("")) {
 				reply = "Register first.";

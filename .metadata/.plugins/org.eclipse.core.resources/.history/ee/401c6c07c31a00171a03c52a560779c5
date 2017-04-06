@@ -1,0 +1,13 @@
+register irene
+start
+go room2
+swim
+takeSWORD
+look
+dig
+go  
+save
+register irene
+Go ROOM5
+dig
+hello
