@@ -15,26 +15,25 @@ public class EntryPoint {
 	@Autowired
 	UserRepository rep;
 	
-	//trigger the moment all the object are initialized 
 	@PostConstruct
 	public void run() throws Exception{
-		
-//		comment this to get user input
 		Main m = new Main(this);
 		m.run();	
-		
-		//uncomment this to read files
-		//String path = "/Users/eddrichjanzzenang/Desktop//test.txt";
-		//Main m = new Main(this, path); 
-//			
 	}
 	
+	//REPO UPDATES
 	public void createUser(User u, String in, String room, int status){	
 		u.setName(in);
 		u.setRoom(room);
 		u.setStatus(status);
 		rep.save(u);
 		System.out.println("Added user to database");
+	}
+	
+	public void saveUser(User u, String room, int status){
+		u.setRoom(room);
+		u.setStatus(status);
+		rep.save(u);
 	}
 	
 	public User findUser(String name){
@@ -47,12 +46,5 @@ public class EntryPoint {
 	
 	public List<User> getAll(){
 		return rep.findAll();
-	}
-	
-	public void saveUser(User u, String room, int status){
-		u.setRoom(room);
-		u.setStatus(status);
-		rep.save(u);
-	}
-	
+	}	
 }

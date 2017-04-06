@@ -8,7 +8,6 @@ public class DragonFramework {
 	SessionHandler s;
 	HashMap<String, Object> hm;
 	
-	public String input;
 	public String currentRoom = "Room1";
 	public String command = "";
 	public String user = "";
@@ -25,9 +24,6 @@ public class DragonFramework {
 	
 	//COMMAND
 	public Object in(String input) throws Exception{
-		RoomCommandValidator v = new RoomCommandValidator();
-		this.input = input;
-		Class<?> c = SessionHandler.class;
 	
 		if(input.toLowerCase().startsWith("register")){
 			
@@ -35,33 +31,38 @@ public class DragonFramework {
     	}
 		
     	else {
-			try {
-				String[] ins = regex(input);
-				s.setCommand(input);
-	
-				//VALIDATION
-				Field field = c.getDeclaredField("command");
-				field.setAccessible(true);
-				v.validate(s, (String) field.get(s), c.getMethod("setCommand", String.class), this);
-			
-				//PROCESS COMMANDS
-				processCommand(ins);
-	
-			} catch (Exception e){
-				if(e instanceof NullPointerException || e instanceof RuntimeException){
-					System.out.println("Invalid command. \n");
-					return true;
-				} else {
-					e.printStackTrace();
-				}
-			}
-			
-			return checkEnd();
+    		
+			return command(input);
     	}
 	}
 	
-	//USER
-	public String register(String input) throws Exception{
+	private Object command(String input) throws Exception {
+		try {
+			RoomCommandValidator v = new RoomCommandValidator();
+			Class<?> c = SessionHandler.class;
+			
+			//VALIDATION
+			String[] ins = regex(input);
+			s.setCommand(input);
+			Field field = c.getDeclaredField("command");
+			field.setAccessible(true);
+			v.validate(s, (String) field.get(s), c.getMethod("setCommand", String.class), this);
+		
+			//PROCESS COMMANDS
+			processCommand(ins);
+
+		} catch (Exception e){
+			if(e instanceof NullPointerException || e instanceof RuntimeException){
+				System.out.println("Invalid command. \n");
+				return true;
+			} else {
+				e.printStackTrace();
+			}
+		}
+		return checkEnd();
+	}
+
+	private Object register(String input) throws Exception{
 		RoomCommandValidator v = new RoomCommandValidator();
 		Class<?> c = SessionHandler.class;
 		try {
@@ -76,21 +77,22 @@ public class DragonFramework {
 			
 			//SAVING AND LOADING USER
 			user = temp;
-			
-			System.out.println("\nInput 'Start' to start game.\n "
+			System.out.println("\nInput 'Start' to start game.\n"
 					+ "Use command 'exit' to save and exit game\n");
 			
 			return user;
+			
 		} catch (RuntimeException e){
 			e.printStackTrace();
 			System.out.println("ERROR: User not registered.");
 			return null;
 		}
 	}
-	
 
-	boolean isState(int x ){
-		return ((this.gameState & x) == x);
+	public void process(String currentRoom, int gameState, String command) throws Exception{
+		this.hm = rcm.processRoom(currentRoom, gameState, command);
+    	System.out.println(this.hm.get("message") + "\n");
+	  	this.gameState = (Integer) this.hm.get("status");
 	}
 	
 	private String[] regex(String s){
@@ -102,13 +104,22 @@ public class DragonFramework {
 		}		
 		return a;
 	}
-	
-	public void process(String currentRoom, int gameState, String command) throws Exception{
-		this.hm = rcm.processRoom(currentRoom, gameState, command);
-    	System.out.println(this.hm.get("message") + "\n");
-	  	this.gameState = (Integer) this.hm.get("status");
+
+	private Object checkEnd() {
+		if((gameState & 256) == 256){
+			start = false;
+			currentRoom = "Room1";
+			gameState = 0;
+			user = "";
+			return false;
+		} 
+		if(!start){
+			return user;
+		} else {
+			return true;
+		} 
 	}
-	
+		
 	private void processCommand(String[] ins) throws Exception {
 		ins[0] = ins[0].toLowerCase();
 		
@@ -145,21 +156,7 @@ public class DragonFramework {
 					process(currentRoom, gameState, command);		
 		}	
 	}
-	
-	private Object checkEnd() {
-		if((gameState & 256) == 256){
-			start = false;
-			currentRoom = "Room1";
-			gameState = 0;
-			return false;
-		} 
-		if(!start){
-			return user;
-		} else {
-			return true;
-		} 
-	}
-	
+
 	private void hint(){
 		System.out.println("You are in: " + currentRoom);
 		System.out.println("Hint:");
@@ -204,4 +201,9 @@ public class DragonFramework {
 				break;
 		}    			
 	}		
+
+	boolean isState(int x ){
+		return ((this.gameState & x) == x);
+	}
+	
 }

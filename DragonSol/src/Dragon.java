@@ -1,4 +1,3 @@
-//import org.apache.log4j.BasicConfigurator;
 import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -7,7 +6,6 @@ public class Dragon
     @SuppressWarnings("resource")
 	public static void main(String[] args)
     {
-
     	@SuppressWarnings("unused")
 		AbstractApplicationContext ctx;
     	

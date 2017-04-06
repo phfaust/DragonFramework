@@ -16,13 +16,62 @@ public class Main {
 	DragonFramework df;
 	EntryPoint entry;
 	
-	
 	public Main(EntryPoint entry){
 		df = new DragonFramework();
 		this.entry = entry;
 	}
 	
-	public void runfile(String path) throws Exception{
+	private void startgame() throws Exception {
+	    	//INITIALIZE    	
+	    	isRunning = true;
+	    	//RUN
+	    	while(isRunning){
+		    	String in = sc.nextLine();
+		    	in = in.trim();
+		    
+		    	if(in.toLowerCase().startsWith("file")){
+		    		System.out.println("Input path/filename: ");
+		    		runfile(sc.nextLine());
+		    	}
+		    	else {
+		    		Object o = df.in(in);
+		    		run(o);
+		    	}
+	    	}
+	    }
+	 
+	//RUN
+	public void run() throws Exception {
+		System.out.println("WELCOME TO DRAGON GAME!");
+		System.out.println("You are trap in this maze.\nSolve the puzzles and figure a way out before the dragon turns you in to ashes. "
+				+ "\nUse command 'file' if you want to load commands from file. \nUse command 'Register (name)' to load/create a game.\n");	
+		showUsers();
+		startgame();
+	}	
+    
+    private void run(Object o) {
+    	try {
+    		if(!(boolean) o){
+    			isRunning =  false;
+    			hasUser = false;
+    			System.out.println("Game Over.\n \n");
+    			run();
+    		}
+    	} catch (Exception e) {
+    		if(hasUser){
+    			userSave((String) o);
+    			System.out.println("Game exited."
+    					+ "\nUse command 'file' if you want to load commands from file."
+    					+ "\nUse command 'Register (name)' to load/create a game.\n");	
+    			showUsers();
+    			
+    		} else { 
+    			loadUser((String) o);
+    		}	
+    	}
+	}
+
+    private void runfile(String path) throws Exception{
 		BufferedReader br = null;
 		FileReader fr = null;
 		try {
@@ -38,77 +87,21 @@ public class Main {
 				Object o = df.in(sCurrentLine);
 				run(o);
 			}
-
 		} catch (IOException e) {
 			e.printStackTrace();
 
 		} finally {
 			try {
-				if (br != null)
-					br.close();
-
-				if (fr != null)
-					fr.close();
-
+				if (br != null) br.close();
+				if (fr != null) fr.close();
+				
 			} catch (IOException ex) {
 				ex.printStackTrace();
 			}
 		}	
 	}
 	
-	
-	public void run() throws Exception {
-		System.out.println("WELCOME TO DRAGON GAME!");
-		System.out.println("You are trap in this maze.\nSolve the puzzles and figure a way out before the dragon turns you in to ashes. "
-				+ "\nUse command 'file' if you want to load from file. \nUse command 'Register (name)' to load/create a game.\n");	
-		showUsers();
-		startgame();
-	}	
-	
-    public void startgame() throws Exception {
-    	//INITIALIZE    	
-    	isRunning = true;
-    	//RUN
-    	while(isRunning){
-	    	String in = sc.nextLine();
-	    	in = in.trim();
-	    	
-	    	if(in.toLowerCase().startsWith("file")){
-	    		System.out.println("Input file name: ");
-	    		runfile(sc.nextLine());
-	    	}
-	    	else {
-	    		Object o = df.in(in);
-	    		run(o);
-	    	}
-    	}
-    }
-    
-    private void run(Object o) {
-    	try {
-    		if(!(boolean) o){
-    			isRunning =  false;
-    			hasUser = false;
-    			System.out.println("Game Over.\n \n");
-    			run();
-    		}
-    	} catch (Exception e) {
-    		if(hasUser){
-    			userSave((String) o);
-    			hasUser = false;
-    			df.user = "";
-    			System.out.println("Game exited\n");
-    			System.out.println("Use command 'Register (name)' to load/create a game.\n");	
-    			showUsers();
-    			
-    		} else { 
-    			loadUser((String) o);
-    			hasUser = true;
-    			System.out.println("Loaded User \n");
-    		}	
-    	}
-	}
-
+    //USERS
 	private void loadUser(String in) {
 		User u = entry.findUser(in);
 		if(u == null){
@@ -119,10 +112,14 @@ public class Main {
 			df.currentRoom = u.getRoom();
 			df.gameState = u.getStatus();
 		}
+		hasUser = true;
+		System.out.println("Loaded user " + in + "\n");
 	}
 	
 	private void userSave(String in) {
 		entry.saveUser(entry.findUser(in), df.currentRoom, df.gameState);
+		hasUser = false;
+		df.user = "";
 	}
 
 	public void showUsers(){
