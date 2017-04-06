@@ -82,9 +82,10 @@ public class DragonFramework {
 			
 			return user;
 			
-		} catch (Exception e){
+		} catch (RuntimeException e){
+			e.printStackTrace();
 			System.out.println("ERROR: User not registered.");
-			return false;
+			return null;
 		}
 	}
 

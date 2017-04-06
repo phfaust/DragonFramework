@@ -53,7 +53,7 @@ public class Main {
     	try {
     		if(!(boolean) o){
     			isRunning =  false;
-    			hasUser = false;   
+    			hasUser = false;
     			run();
     		}
     	} catch (Exception e) {

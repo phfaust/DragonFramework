@@ -53,7 +53,8 @@ public class Main {
     	try {
     		if(!(boolean) o){
     			isRunning =  false;
-    			hasUser = false;   
+    			hasUser = false;
+    			System.out.println("Game Over.\n \n");
     			run();
     		}
     	} catch (Exception e) {
