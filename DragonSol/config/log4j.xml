@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration threshold="off">
+	
+    <appender name="console" class="org.apache.log4j.ConsoleAppender">
+        <param name="Threshold" value="off" />
+    </appender>
+    <appender name="rolling-file" class="org.apache.log4j.ConsoleAppender">
+        <param name="Threshold" value="off" />
+    </appender>
+   
+    
+</log4j:configuration> 
+
+
+
+<!-- http://stackoverflow.com/questions/17987102/how-to-disable-log4j-in-web-applications-turn-off-warn-messages -->
