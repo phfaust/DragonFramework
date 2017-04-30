@@ -1,0 +1,15 @@
+package app;
+
+public class ReadContext {
+	private ReadStrategy strategy;
+	
+	public void setReadStrategy(String strategy) throws InstantiationException, IllegalAccessException, ClassNotFoundException{
+		Object o = Class.forName(strategy).newInstance();  
+		this.strategy = (ReadStrategy) o;
+	}
+	
+	public void read(Main m){
+		strategy.read(m);
+	}
+
+}

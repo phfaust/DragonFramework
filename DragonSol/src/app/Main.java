@@ -1,10 +1,7 @@
 package app;
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+
 import java.util.List;
 import java.util.Scanner;
-
 import app.entity.User;
 import framework.DragonFramework;
 
@@ -24,32 +21,33 @@ public class Main {
 	private void startgame() throws Exception {
 	    	//INITIALIZE    	
 	    	isRunning = true;
+	    	System.out.println("Input read strategy:");
+	    	//ReadFileStrategy will read from file first and go back to cmd after
+	    	//ReadCmdStrategy will take input from command line
+	   
+	    	String method = sc.next();
+	    	ReadContext rc = new ReadContext();
+	    	rc.setReadStrategy(method);
+	    	rc.read(this);
+	    	
 	    	//RUN
 	    	while(isRunning){
 		    	String in = sc.nextLine();
 		    	in = in.trim();
-		    
-		    	if(in.toLowerCase().startsWith("file")){
-		    		System.out.println("Input path/filename: ");
-		    		runfile(sc.nextLine());
-		    	}
-		    	else {
-		    		Object o = df.in(in);
-		    		run(o);
-		    	}
+		    	Object o = df.in(in);
+		    	run(o);
 	    	}
 	    }
 	 
 	//RUN
 	public void run() throws Exception {
 		System.out.println("WELCOME TO DRAGON GAME!");
-		System.out.println("You are trap in this maze.\nSolve the puzzles and figure a way out before the dragon turns you in to ashes. "
-				+ "\nUse command 'file' if you want to load commands from file. \nUse command 'Register (name)' to load/create a game.\n");	
+		System.out.println("You are trap in this maze.\nSolve the puzzles and figure a way out before the dragon turns you in to ashes. + \nUse command 'Register (name)' to load/create a game.\n");	
 		showUsers();
 		startgame();
 	}	
     
-    private void run(Object o) {
+    public void run(Object o) {
     	try {
     		if(!(boolean) o){
     			isRunning =  false;
@@ -70,36 +68,6 @@ public class Main {
     	}
 	}
 
-    private void runfile(String path) throws Exception{
-		BufferedReader br = null;
-		FileReader fr = null;
-		try {
-			fr = new FileReader(path);
-			br = new BufferedReader(fr);
-			String sCurrentLine;
-
-			br = new BufferedReader(new FileReader(path));
-
-			while ((sCurrentLine = br.readLine()) != null) {
-				sCurrentLine = sCurrentLine.trim();
-				System.out.println(sCurrentLine);
-				Object o = df.in(sCurrentLine);
-				run(o);
-			}
-		} catch (IOException e) {
-			e.printStackTrace();
-
-		} finally {
-			try {
-				if (br != null) br.close();
-				if (fr != null) fr.close();
-				
-			} catch (IOException ex) {
-				ex.printStackTrace();
-			}
-		}	
-	}
-	
     //USERS
 	private void loadUser(String in) {
 		User u = entry.findUser(in);

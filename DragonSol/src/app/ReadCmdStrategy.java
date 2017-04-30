@@ -1,5 +1,9 @@
 package app;
 
-public class ReadCmdStrategy {
+public class ReadCmdStrategy implements ReadStrategy{
 
+	@Override
+	public void read(Main m) {
+		//nothing
+	}
 }

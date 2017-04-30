@@ -1,0 +1,14 @@
+package app;
+
+public class ReadContext {
+	private ReadStrategy strategy;
+	
+	public void setReadStrategy(ReadStrategy strategy){
+		this.strategy = strategy;
+	}
+	
+	public void read(){
+		strategy.read();
+	}
+
+}
