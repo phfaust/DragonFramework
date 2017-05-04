@@ -1,0 +1,6 @@
+package commands;
+
+@CommandAnnotation(target=GoCommand.class)
+public class GoCommand implements CommandHandler {
+
+}

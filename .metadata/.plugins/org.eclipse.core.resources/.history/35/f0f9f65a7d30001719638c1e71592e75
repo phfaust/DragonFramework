@@ -1,0 +1,21 @@
+package app;
+
+import room.RoomCommandManager;
+
+public class Context {
+	Session s;
+	RoomCommandManager rcm;
+	
+	public Session getS() {
+		return s;
+	}
+	public void setS(Session s) {
+		this.s = s;
+	}
+	public RoomCommandManager getRcm() {
+		return rcm;
+	}
+	public void setRcm(RoomCommandManager rcm) {
+		this.rcm = rcm;
+	}
+}

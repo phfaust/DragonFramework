@@ -1,0 +1,44 @@
+package app;
+
+import java.util.Scanner;
+import framework.DragonFramework;
+
+public class Main {
+
+	boolean isRunning = false;	
+	Scanner sc = new Scanner(System.in);
+	Session s;
+	RoomCommandManager rcm;
+	
+	DragonFramework df;
+	EntryPoint entry;
+	ss
+	public Main(){
+		df = new DragonFramework();
+	}
+	
+	private void startgame() throws Exception {
+	    	//INITIALIZE    	
+	    	isRunning = true;
+	    	System.out.println("Input read strategy: File/Cmd");
+	    	//ReadFileStrategy will read from file first and go back to cmd after
+	    	//ReadCmdStrategy will take input from command line
+	   
+	    	String method = sc.next();
+	    	
+	    	Object o = Class.forName("app.Read"+method+"Strategy").newInstance();
+	    	ReadContext rc = new ReadContext((ReadStrategy) o);	    	
+
+	    	System.out.println("WELCOME TO DRAGON GAME!");
+			System.out.println("You are trap in this maze.\nSolve the puzzles and figure a way out before the dragon turns you in to ashes.");	
+			
+	    	rc.read(this);
+	    }
+	 
+	//RUN
+	public void run() throws Exception {
+		//showUsers();
+		startgame();
+	}	
+    
+}

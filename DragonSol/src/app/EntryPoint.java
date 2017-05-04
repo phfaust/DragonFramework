@@ -17,7 +17,7 @@ public class EntryPoint {
 	
 	@PostConstruct
 	public void run() throws Exception{
-		Main m = new Main(this);
+		Main m = new Main();
 		m.run();	
 	}
 	

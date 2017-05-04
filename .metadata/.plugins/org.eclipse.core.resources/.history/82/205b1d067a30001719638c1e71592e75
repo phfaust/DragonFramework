@@ -1,0 +1,11 @@
+package app;
+
+public class Session {
+	String currentRoom = "Room1";
+	String user;
+	int gameState = 0;
+	
+	Session(String user){
+		this.user = user;
+	}
+}

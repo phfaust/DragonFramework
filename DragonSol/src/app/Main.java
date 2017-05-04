@@ -1,27 +1,16 @@
 package app;
 
-import java.util.List;
 import java.util.Scanner;
-import app.entity.User;
 import framework.DragonFramework;
 
 public class Main {
 
-	boolean isRunning = false;
-	boolean hasUser = false;
-	
+	boolean isRunning = false;	
 	Scanner sc = new Scanner(System.in);
-	
 	DragonFramework df;
-	EntryPoint entry;
-	
-	String currentRoom = "Room1";
-	String user = "";
-	int gameState = 1;
-	
-	public Main(EntryPoint entry){
+
+	public Main(){
 		df = new DragonFramework();
-		this.entry = entry;
 	}
 	
 	private void startgame() throws Exception {
@@ -42,65 +31,8 @@ public class Main {
 	    	rc.read(this);
 	    }
 	 
-	//RUN
 	public void run() throws Exception {
-		//showUsers();
 		startgame();
 	}	
     
-    public void run(Object o) {
-    	try {
-    		if(!(boolean) o){
-    			isRunning =  false;
-    			hasUser = false;   
-    			run();
-    		}
-    	} catch (Exception e) {
-    		if(hasUser){
-    			userSave((String) o);
-    			System.out.println("Game exited."
-    					+ "\nUse command 'file' if you want to load commands from file."
-    					+ "\nUse command 'Register (name)' to load/create a game.\n");	
-    			showUsers();
-    			
-    		} else { 
-    			loadUser((String) o);
-    		}	
-    	}
-	}
-
-    //USERS
-	private void loadUser(String in) {
-		User u = entry.findUser(in);
-		if(u == null){
-			u = new User();
-			entry.createUser(u, in, currentRoom, gameState);
-		}
-		else {
-			currentRoom = u.getRoom();
-			gameState = u.getStatus();
-		}
-		hasUser = true;
-		System.out.println("Loaded user " + in + "\n");
-	}
-	
-	private void userSave(String in) {
-		entry.saveUser(entry.findUser(in), currentRoom, gameState);
-		hasUser = false;
-		user = "";
-	}
-
-	public void showUsers(){
-    	List<app.entity.User> users =  entry.getAll();
-    	if(users.size() == 0){
-    		System.out.println("There are no existing users..");
-    	}
-    	else {
-    		System.out.println("Existing Users:");
-    		for(app.entity.User u : users){
-    			System.out.println("   " + u.getName());
-    		}
-    	}
-    }
-			
 }
