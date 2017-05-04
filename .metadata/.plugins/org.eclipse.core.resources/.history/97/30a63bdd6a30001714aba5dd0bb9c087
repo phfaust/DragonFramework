@@ -1,0 +1,6 @@
+package framework;
+
+public class DragonFramework {
+	String currentRoom = "Room1";
+	int gameState = 0;
+}

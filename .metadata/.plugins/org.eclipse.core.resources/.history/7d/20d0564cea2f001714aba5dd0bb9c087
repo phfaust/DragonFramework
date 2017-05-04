@@ -1,0 +1,24 @@
+package app;
+
+import java.util.Scanner;
+
+public class ReadCmdStrategy implements ReadStrategy{
+
+	@Override
+	public void read(Main m){
+		Scanner sc = new Scanner(System.in);
+		while(m.isRunning){
+	    	String in = sc.nextLine();
+	    	in = in.trim();
+	    	Object o;
+			try {
+				o = m.df.in(in);
+				m.run(o);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+    	}
+		sc.close();
+	}
+}

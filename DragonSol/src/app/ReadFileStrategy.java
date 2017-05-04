@@ -24,15 +24,9 @@ public class ReadFileStrategy implements ReadStrategy{
 			while ((sCurrentLine = br.readLine()) != null) {
 				sCurrentLine = sCurrentLine.trim();
 				System.out.println(sCurrentLine);
-				Object o;
-				try {
-					o = m.df.in(sCurrentLine);
-					m.run(o);
-				} catch (Exception e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+				m.df.in(sCurrentLine);
 			}
+			
 		} catch (IOException e) {
 			e.printStackTrace();
 

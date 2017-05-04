@@ -9,9 +9,15 @@ public class Main {
 
 	boolean isRunning = false;
 	boolean hasUser = false;
+	
 	Scanner sc = new Scanner(System.in);
+	
 	DragonFramework df;
 	EntryPoint entry;
+	
+	String currentRoom = "Room1";
+	String user = "";
+	int gameState = 1;
 	
 	public Main(EntryPoint entry){
 		df = new DragonFramework();
@@ -21,29 +27,24 @@ public class Main {
 	private void startgame() throws Exception {
 	    	//INITIALIZE    	
 	    	isRunning = true;
-	    	System.out.println("Input read strategy:");
+	    	System.out.println("Input read strategy: File/Cmd");
 	    	//ReadFileStrategy will read from file first and go back to cmd after
 	    	//ReadCmdStrategy will take input from command line
 	   
 	    	String method = sc.next();
-	    	ReadContext rc = new ReadContext();
-	    	rc.setReadStrategy(method);
-	    	rc.read(this);
 	    	
-	    	//RUN
-	    	while(isRunning){
-		    	String in = sc.nextLine();
-		    	in = in.trim();
-		    	Object o = df.in(in);
-		    	run(o);
-	    	}
+	    	Object o = Class.forName("app.Read"+method+"Strategy").newInstance();
+	    	ReadContext rc = new ReadContext((ReadStrategy) o);	    	
+
+	    	System.out.println("WELCOME TO DRAGON GAME!");
+			System.out.println("You are trap in this maze.\nSolve the puzzles and figure a way out before the dragon turns you in to ashes.");	
+			
+	    	rc.read(this);
 	    }
 	 
 	//RUN
 	public void run() throws Exception {
-		System.out.println("WELCOME TO DRAGON GAME!");
-		System.out.println("You are trap in this maze.\nSolve the puzzles and figure a way out before the dragon turns you in to ashes. + \nUse command 'Register (name)' to load/create a game.\n");	
-		showUsers();
+		//showUsers();
 		startgame();
 	}	
     
@@ -73,20 +74,20 @@ public class Main {
 		User u = entry.findUser(in);
 		if(u == null){
 			u = new User();
-			entry.createUser(u, in, df.currentRoom, df.gameState);
+			entry.createUser(u, in, currentRoom, gameState);
 		}
 		else {
-			df.currentRoom = u.getRoom();
-			df.gameState = u.getStatus();
+			currentRoom = u.getRoom();
+			gameState = u.getStatus();
 		}
 		hasUser = true;
 		System.out.println("Loaded user " + in + "\n");
 	}
 	
 	private void userSave(String in) {
-		entry.saveUser(entry.findUser(in), df.currentRoom, df.gameState);
+		entry.saveUser(entry.findUser(in), currentRoom, gameState);
 		hasUser = false;
-		df.user = "";
+		user = "";
 	}
 
 	public void showUsers(){

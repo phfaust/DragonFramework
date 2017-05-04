@@ -3,9 +3,12 @@ package app;
 public class ReadContext {
 	private ReadStrategy strategy;
 	
-	public void setReadStrategy(String strategy) throws InstantiationException, IllegalAccessException, ClassNotFoundException{
-		Object o = Class.forName("app." + strategy).newInstance();  
-		this.strategy = (ReadStrategy) o;
+	public ReadContext(ReadStrategy strategy){
+		this.strategy = strategy;
+	}
+	
+	public void setReadStrategy(final ReadStrategy strategy){
+		this.strategy = strategy;
 	}
 	
 	public void read(Main m){
