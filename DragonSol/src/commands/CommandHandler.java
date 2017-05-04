@@ -1,6 +1,6 @@
 package commands;
-import framework.DragonFramework;
+import java.util.regex.Matcher;
 
 public interface CommandHandler {
-	public void process(DragonFramework df) throws Exception;
+	public void process(Matcher matcher) throws Exception;
 }

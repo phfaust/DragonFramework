@@ -1,17 +1,17 @@
 package commands;
 
 import java.util.HashMap;
-import java.util.regex.Matcher;
 
 import app.Context;
 import app.Session;
+import framework.DragonFramework;
 
 @CommandAnnotation(target=GoCommand.class)
 public class GoCommand implements CommandHandler {
 
 	@Override
-	public void process(Matcher matcher) throws Exception {
-		String room = matcher.group(1); 
+	public void process(DragonFramework df) throws Exception {
+	//	String room = 
 		
 		Session s = Context.getSession();
 		s.setCurrentRoom(room);
