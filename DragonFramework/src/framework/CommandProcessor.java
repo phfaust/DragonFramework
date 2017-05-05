@@ -34,7 +34,7 @@ public class CommandProcessor {
 	public void processText(String sms) throws Exception{
 
 		for(String regEx: map.keySet()){
-			
+//			System.out.println(sms + " :" +  sms.matches(regEx));
 //			basically checks if the regex is a match throws an error if it does not
 			if(sms.matches(regEx)){
 				CommandHandler ch = map.get(regEx);
@@ -49,11 +49,9 @@ public class CommandProcessor {
 				}
 				return;
 			}
-			
-			
-			throw new RuntimeException("No regEx match");			
-			
+		
 		}
+		throw new RuntimeException("No regEx match");			
 		
 		
 		
