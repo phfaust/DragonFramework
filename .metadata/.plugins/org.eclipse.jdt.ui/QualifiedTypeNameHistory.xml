@@ -2,4 +2,10 @@
 <qualifiedTypeNameHistroy>
 <fullyQualifiedTypeName name="java.util.logging.Level"/>
 <fullyQualifiedTypeName name="app.entity.User"/>
+<fullyQualifiedTypeName name="room.RoomCommandManager"/>
+<fullyQualifiedTypeName name="framework.DragonFramework"/>
+<fullyQualifiedTypeName name="app.Context"/>
+<fullyQualifiedTypeName name="app.Session"/>
+<fullyQualifiedTypeName name="java.util.HashMap"/>
+<fullyQualifiedTypeName name="java.util.regex.Matcher"/>
 </qualifiedTypeNameHistroy>
