@@ -5,5 +5,7 @@
 	<classpathentry kind="lib" path="fast-classpath-scanner-2.0.11-javadoc.jar"/>
 	<classpathentry kind="lib" path="fast-classpath-scanner-2.0.11.jar"/>
 	<classpathentry kind="lib" path="RoomCommandManager.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/WebDependenciesWithRest"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/DragonSol"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

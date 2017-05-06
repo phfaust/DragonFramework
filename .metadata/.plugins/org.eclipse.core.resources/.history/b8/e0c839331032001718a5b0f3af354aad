@@ -1,0 +1,25 @@
+
+package framework;
+
+public class DragonFramework {
+<<<<<<< HEAD
+	
+	public void in(String input){
+=======
+	CommandProcessor cp;
+	public DragonFramework(){
+		cp = new CommandProcessor();
+	}
+	
+	
+	
+	public void in(String input) throws Exception{
+>>>>>>> e6f4e0c062925922dd81bab243e676094b9e3630
+		//load and runs class dynamically from solution class
+		cp.processText(input);
+		
+		
+		
+		
+	}
+}
