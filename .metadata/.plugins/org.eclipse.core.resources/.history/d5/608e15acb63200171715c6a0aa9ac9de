@@ -21,7 +21,7 @@ public class CommandProcessor {
 			try {
 				Class<?> c = Class.forName(s);
 				CommandAnnotation ca = (CommandAnnotation) c.getAnnotation(CommandAnnotation.class);
-				map.put(ca.regEx(), (CommandHandler) c.newInstance());
+				map.put(ca.regEx(), (CommandHandler) ca.newInstance());
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -36,7 +36,7 @@ public class CommandProcessor {
 //			System.out.println(sms + " :" +  sms.matches(regEx));
 //			basically checks if the regex is a match throws an error if it does not
 			if(sms.matches(regEx)){
-				CommandHandler ch = (CommandHandler) map.get(regEx);
+				CommandHandler ch = map.get(regEx);
 				if(ch != null){
 					Pattern strMatch = Pattern.compile(regEx);
 					Matcher m = strMatch.matcher(sms);

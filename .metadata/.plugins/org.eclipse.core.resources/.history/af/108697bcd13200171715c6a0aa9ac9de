@@ -12,7 +12,7 @@ public class CommandProcessor {
 	//matcher hashmap
 	//the string inside the hashmop is the regex
 //	the command handler is the CommandClass itself ex: GoCommand.java
-	HashMap<String, CommandHandler> map = new HashMap<>();	
+	HashMap<String, Object> map = new HashMap<>();	
 	
 	public CommandProcessor(){
 		ScanResult results = new FastClasspathScanner().scan();
@@ -20,8 +20,10 @@ public class CommandProcessor {
 		for (String s : allResults) {
 			try {
 				Class<?> c = Class.forName(s);
-				CommandAnnotation ca = (CommandAnnotation) c.getAnnotation(CommandAnnotation.class);
-				map.put(ca.regEx(), (CommandHandler) c.newInstance());
+				CommandAnnotation ca = c.getAnnotation(CommandAnnotation.class);
+				String str = ca.regEx();
+				Object o = c.newInstance();
+				map.put(str, o);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -36,7 +38,7 @@ public class CommandProcessor {
 //			System.out.println(sms + " :" +  sms.matches(regEx));
 //			basically checks if the regex is a match throws an error if it does not
 			if(sms.matches(regEx)){
-				CommandHandler ch = (CommandHandler) map.get(regEx);
+				CommandHandler ch = map.get(regEx);
 				if(ch != null){
 					Pattern strMatch = Pattern.compile(regEx);
 					Matcher m = strMatch.matcher(sms);

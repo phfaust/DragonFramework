@@ -1,0 +1,15 @@
+package commands;
+
+import java.util.regex.Matcher;
+
+import framework.CommandHandler;
+
+public class StartCommand implements CommandHandler{
+
+	@Override
+	public void process(Matcher matcher) throws Exception {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

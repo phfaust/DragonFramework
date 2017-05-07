@@ -162,3 +162,4 @@ java.net.UnknownHostException: services.gradle.org
 2017-05-06 12:02:56,564 [main] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache file is out-of-date. Remote download required.
 2017-05-07 07:42:43,240 [Worker-2] WARN  org.eclipse.jgit.util.FS - Exception caught during execution of command '[git, config, --system, --edit]' in 'C:\USERS\IRENE\APPDATA\LOCAL\PROGRAMS\GIT\BIN', return code '128', error message 'fatal: Could not switch to '/etc/': No such file or directory
 '
+2017-05-07 07:45:39,604 [main] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache file is not out-of-date. No remote download required.

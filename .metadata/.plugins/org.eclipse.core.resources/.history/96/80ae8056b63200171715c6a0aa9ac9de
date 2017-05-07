@@ -12,7 +12,7 @@ public class CommandProcessor {
 	//matcher hashmap
 	//the string inside the hashmop is the regex
 //	the command handler is the CommandClass itself ex: GoCommand.java
-	HashMap<String, CommandHandler> map = new HashMap<>();	
+	HashMap<String, Object> map = new HashMap<>();	
 	
 	public CommandProcessor(){
 		ScanResult results = new FastClasspathScanner().scan();
