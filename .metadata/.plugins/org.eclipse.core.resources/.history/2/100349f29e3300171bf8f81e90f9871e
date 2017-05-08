@@ -3,10 +3,13 @@ package commands;
 import java.util.regex.Matcher;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.stereotype.Component;
 
 import app.ApplicationContextHolder;
 import app.Context;
+import app.EntryPoint;
 import app.Session;
 import app.entity.User;
 import app.repositories.UserRepository;
@@ -33,12 +36,10 @@ public class RegisterCommand implements CommandHandler {
 		} catch (NullPointerException ne){
 			User u = new User();
 			createUser(u, name, "Room1", 0);
-			System.out.println("Successfully created user " + name);	
-			
 		}
 		
 		s.setUser(name);
-		System.out.println("Successfully loaded user " + name);	
+		System.out.println("Successfully registered user " + name);	
 
 	}
 	
