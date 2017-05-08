@@ -5,6 +5,8 @@ import java.util.regex.Matcher;
 
 import app.Context;
 import app.Session;
+import app.StartState;
+import app.StateContext;
 import framework.CommandAnnotation;
 import framework.CommandHandler;
 
@@ -14,7 +16,10 @@ public class StartCommand implements CommandHandler {
 	@Override
 	public void process(Matcher matcher) throws Exception {
 
-
+		StateContext state = Context.getState();
+		StartState start = new StartState();
+		start.doAction(state);
+		
 		Session s = Context.getSession();
 		
 		try {

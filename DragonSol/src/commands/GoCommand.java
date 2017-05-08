@@ -15,7 +15,7 @@ import framework.CommandHandler;
 
 
 //RoomsWork now but the R in "Room" should be caps
-@CommandAnnotation(regEx="(?i)go\\s+(\\w+)")
+@CommandAnnotation(regEx="(?i)rcm\\s(?i)go\\s+(\\w+)")
 public class GoCommand implements CommandHandler {
 
 	@Override

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 import app.ApplicationContextHolder;
 import app.Context;
 import app.Session;
+import app.StateContext;
 import app.entity.User;
 import app.repositories.UserRepository;
 import framework.CommandAnnotation;
@@ -22,7 +23,7 @@ public class RegisterCommand implements CommandHandler {
 	
 	@Override
 	public void process(Matcher matcher) throws Exception {
-
+		
 		Session s = Context.getSession();	
 		String name = matcher.group(1);
 		System.out.println(name);

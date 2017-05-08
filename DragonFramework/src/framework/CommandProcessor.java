@@ -22,10 +22,11 @@ public class CommandProcessor {
 				Class<?> c = Class.forName(s);
 				CommandAnnotation ca = (CommandAnnotation) c.getAnnotation(CommandAnnotation.class);
 				map.put(ca.regEx(), (CommandHandler) c.newInstance());
+				
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		}	
+		} 
 		
 	}
 	
@@ -44,12 +45,11 @@ public class CommandProcessor {
 					if(m.find()){
 						ch.process(m);
 					}
-			
 				}
 				return;
 			}
-		
 		}
+	
 		throw new RuntimeException("No regEx match");			
 		
 		

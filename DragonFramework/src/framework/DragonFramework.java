@@ -11,7 +11,5 @@ public class DragonFramework {
 	public void in(String input) throws Exception{
 		//load and runs class dynamically from solution class
 		cp.processText(input);
-		
-		
 	}
 }

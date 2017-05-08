@@ -9,7 +9,7 @@ import framework.CommandAnnotation;
 import framework.CommandHandler;
 
 
-@CommandAnnotation(regEx = "(?i)(hint)")
+@CommandAnnotation(regEx = "(?i)rcm\\s(?i)(hint)")
 public class HintCommand implements CommandHandler {
 
 	@Override

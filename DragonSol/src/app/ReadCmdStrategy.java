@@ -12,6 +12,12 @@ public class ReadCmdStrategy implements ReadStrategy{
 	    	String in = sc.nextLine();
 	    	in = in.trim();
 	    	
+	    	StateContext state = Context.getState();
+			if(state.getState().toString().equals("Start State")){
+				in = "rcm " + in;
+			}
+			System.out.println(state.toString() + " -- " + in);
+	    	
 	    	try{
 	    		m.df.in(in);	
 	    	} catch (Exception e){

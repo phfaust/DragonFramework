@@ -11,6 +11,10 @@ public class Main {
 
 	public Main(){
 		df = new DragonFramework();
+		StateContext state = new StateContext();
+		IdleState idle = new IdleState();
+		idle.doAction(state);
+		Context.setState(state);
 	}
 	
 	private void startgame() throws Exception {

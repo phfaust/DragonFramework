@@ -3,6 +3,7 @@ package app;
 import room.RoomCommandManager;
 
 public class Context {
+	static StateContext state = new StateContext();
 	static Session session = new Session();
 	static RoomCommandManager rcm = new RoomCommandManager();
 	
@@ -17,6 +18,12 @@ public class Context {
 	}
 	public static void setRcm(RoomCommandManager rcm) {
 		Context.rcm = rcm;
+	}
+	public static StateContext getState() {
+		return state;
+	}
+	public static void setState(StateContext state) {
+		Context.state = state;
 	}
 
 }
