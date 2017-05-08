@@ -19,10 +19,12 @@ public class EntryPoint {
 	public void run() throws Exception{
 		System.out.println("Users:");
 		for(User u: getAll()){
-			System.out.println(u.getName());
-		Main m = new Main();
-		m.run();	
+			System.out.println(u.getName());	
 		}
+		
+		Main m = new Main();
+		m.run();
+		
 	}
 	
 	//REPO UPDATES
