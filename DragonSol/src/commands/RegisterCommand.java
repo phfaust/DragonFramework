@@ -40,6 +40,7 @@ public class RegisterCommand implements CommandHandler {
 		
 		s.setUser(name);
 		System.out.println("Successfully loaded user " + name);	
+		System.out.println("Use command 'start' to begin");
 
 	}
 	

@@ -30,7 +30,7 @@ public class Main {
 	    	ReadContext rc = new ReadContext((ReadStrategy) o);	    	
 
 	    	System.out.println("WELCOME TO DRAGON GAME!");
-			System.out.println("You are trap in this maze.\nSolve the puzzles and figure a way out before the dragon turns you in to ashes.");	
+			System.out.println("You are trapped in this maze.\nSolve the puzzles and figure a way out before the dragon turns you in to ashes.");	
 			
 	    	rc.read(this);
 	}
