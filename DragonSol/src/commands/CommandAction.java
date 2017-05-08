@@ -5,8 +5,11 @@ import java.util.regex.Matcher;
 
 import app.Context;
 import app.Session;
+import framework.CommandAnnotation;
 import framework.CommandHandler;
 
+
+//@CommandAnnotation(regEx="(?i)(\\w+)")
 public class CommandAction implements CommandHandler {
 
 	@Override

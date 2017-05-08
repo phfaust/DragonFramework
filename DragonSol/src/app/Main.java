@@ -29,7 +29,7 @@ public class Main {
 			System.out.println("You are trap in this maze.\nSolve the puzzles and figure a way out before the dragon turns you in to ashes.");	
 			
 	    	rc.read(this);
-	    }
+	}
 	 
 	public void run() throws Exception {
 		startgame();

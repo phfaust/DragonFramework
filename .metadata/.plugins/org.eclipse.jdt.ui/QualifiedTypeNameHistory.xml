@@ -8,4 +8,5 @@
 <fullyQualifiedTypeName name="app.Session"/>
 <fullyQualifiedTypeName name="java.util.HashMap"/>
 <fullyQualifiedTypeName name="java.util.regex.Matcher"/>
+<fullyQualifiedTypeName name="framework.CommandHandler"/>
 </qualifiedTypeNameHistroy>

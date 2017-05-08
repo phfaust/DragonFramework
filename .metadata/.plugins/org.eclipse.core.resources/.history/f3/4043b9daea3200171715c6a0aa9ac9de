@@ -1,0 +1,14 @@
+package framework;
+
+import java.util.regex.Matcher;
+
+public class CommandAction implements CommandHandler{
+
+	@Override
+	public void process(Matcher matcher) throws Exception {
+		// TODO Auto-generated method stub
+		//pass to actions
+		
+	}
+
+}

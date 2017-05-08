@@ -12,7 +12,6 @@ public class ReadCmdStrategy implements ReadStrategy{
 	    	String in = sc.nextLine();
 	    	in = in.trim();
 	    	
-	    	
 	    	try{
 	    		m.df.in(in);	
 	    	} catch (Exception e){

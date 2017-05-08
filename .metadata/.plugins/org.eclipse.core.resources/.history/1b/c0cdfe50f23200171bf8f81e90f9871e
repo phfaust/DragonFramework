@@ -1,0 +1,32 @@
+package commands;
+
+import java.util.regex.Matcher;
+
+import org.springframework.context.support.AbstractApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import app.Context;
+import app.Session;
+import framework.CommandAnnotation;
+import framework.CommandHandler;
+
+@CommandAnnotation(regEx="(?i)register\\s+(\\w+)")
+public class RegisterCommand implements CommandHandler {
+
+	@Override
+	public void process(Matcher matcher) throws Exception {
+		
+		//check if game running
+		
+		String name = matcher.group(1);
+		System.out.println(name);
+		
+		Session s = Context.getSession();
+		s.setUser(name);
+		 
+		
+		System.out.println("Successfully registered user " + name);
+		
+
+	}
+}
