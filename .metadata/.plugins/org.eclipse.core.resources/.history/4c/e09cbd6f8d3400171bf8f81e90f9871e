@@ -30,7 +30,6 @@ public class RegisterCommand implements CommandHandler {
 		try {
 			User u = findUser(name);
 			s.setCurrentRoom(u.getRoom());
-			s.setGameState(u.getStatus());
 		} catch (NullPointerException ne){
 			User u = new User();
 			createUser(u, name, "Room1", 0);

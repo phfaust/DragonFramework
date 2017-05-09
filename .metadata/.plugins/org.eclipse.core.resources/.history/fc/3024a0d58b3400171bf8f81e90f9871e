@@ -19,10 +19,8 @@ public class EntryPoint {
 	public void run() throws Exception{
 		System.out.println("Users:");
 		for(User u: getAll()){
-			System.out.println("\t" + u.getName());	
+			System.out.println("\t " + u.getName());	
 		}
-		
-		System.out.println();
 		
 		Main m = new Main();
 		m.run();

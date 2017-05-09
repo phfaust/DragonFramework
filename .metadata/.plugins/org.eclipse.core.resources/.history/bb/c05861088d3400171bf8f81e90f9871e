@@ -46,10 +46,7 @@ public class Main {
 		if((Context.getSession().getGameState() & 256) == 256) {
 			isRunning = false;
 			System.out.println("Game Over \n");
-			IdleState idle = new IdleState();
-			idle.doAction(state);
 			startgame();
-			//or load check point here?
 		}
 	}
     

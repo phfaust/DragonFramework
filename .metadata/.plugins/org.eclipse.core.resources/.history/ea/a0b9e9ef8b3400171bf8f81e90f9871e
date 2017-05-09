@@ -22,8 +22,6 @@ public class EntryPoint {
 			System.out.println("\t" + u.getName());	
 		}
 		
-		System.out.println();
-		
 		Main m = new Main();
 		m.run();
 		

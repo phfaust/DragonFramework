@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 import app.ApplicationContextHolder;
 import app.Context;
 import app.Session;
+import app.StateContext;
 import app.entity.User;
 import app.repositories.UserRepository;
 import framework.CommandAnnotation;
@@ -30,7 +31,6 @@ public class RegisterCommand implements CommandHandler {
 		try {
 			User u = findUser(name);
 			s.setCurrentRoom(u.getRoom());
-			s.setGameState(u.getStatus());
 		} catch (NullPointerException ne){
 			User u = new User();
 			createUser(u, name, "Room1", 0);
