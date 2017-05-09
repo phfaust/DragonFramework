@@ -12,6 +12,7 @@ import app.entity.User;
 import app.repositories.UserRepository;
 import framework.CommandAnnotation;
 import framework.CommandHandler;
+import state.StateContext;
 
 @Component
 @CommandAnnotation(regEx="(?i)register\\s+(\\w+)")

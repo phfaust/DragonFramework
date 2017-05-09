@@ -1,4 +1,4 @@
-package app;
+package state;
 
 public interface State {
 	   public void doAction(StateContext context);

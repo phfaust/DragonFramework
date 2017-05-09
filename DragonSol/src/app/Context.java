@@ -1,6 +1,7 @@
 package app;
 
 import room.RoomCommandManager;
+import state.StateContext;
 
 public class Context {
 	static StateContext state = new StateContext();

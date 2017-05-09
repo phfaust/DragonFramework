@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import app.entity.User;
 import app.repositories.UserRepository;
+import strategy.Main;
 
 import java.util.List;
 
