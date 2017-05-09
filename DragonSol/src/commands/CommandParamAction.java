@@ -22,6 +22,7 @@ public class CommandParamAction implements CommandHandler {
 		
 		HashMap<String, Object> map = Context.getRcm().processRoom(s.getCurrentRoom(), s.getGameState(), action + " " + param);
 		System.out.println(map.get("message"));
+		s.setGameState((int) map.get("status"));
 	}
 
 }

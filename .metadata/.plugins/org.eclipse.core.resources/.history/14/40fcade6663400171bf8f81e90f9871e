@@ -21,7 +21,6 @@ public class CommandAction implements CommandHandler {
 		
 		HashMap<String, Object> map = Context.getRcm().processRoom(s.getCurrentRoom(), s.getGameState(), action);
 		System.out.println(map.get("message"));
-		s.setGameState((int) map.get("status"));
 	}
 
 }

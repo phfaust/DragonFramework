@@ -9,19 +9,19 @@ import framework.CommandAnnotation;
 import framework.CommandHandler;
 
 
-@CommandAnnotation(regEx="(?i)rcm\\s+(\\w+)")
-public class CommandAction implements CommandHandler {
+@CommandAnnotation(regEx="(?i)rcm\\s+(\\w+)\\s(\\w+)")
+public class CommandParamAction implements CommandHandler {
 
 	@Override
 	public void process(Matcher matcher) throws Exception {
 		String action = matcher.group(1);
+		String param = matcher.group(2);
 		System.out.println(action);
 		
 		Session s = Context.getSession();
 		
-		HashMap<String, Object> map = Context.getRcm().processRoom(s.getCurrentRoom(), s.getGameState(), action);
+		HashMap<String, Object> map = Context.getRcm().processRoom(s.getCurrentRoom(), s.getGameState(), action + " " + param);
 		System.out.println(map.get("message"));
-		s.setGameState((int) map.get("status"));
 	}
 
 }
