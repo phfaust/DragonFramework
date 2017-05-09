@@ -40,8 +40,8 @@ public class Main {
 		startgame();
 	}
 	
-	public void in(String s) throws Exception{
-		df.in(state.getState().in(s));
+	public void in(String s){
+		df.in(state.getState().editText(s));
 	}
     
 }

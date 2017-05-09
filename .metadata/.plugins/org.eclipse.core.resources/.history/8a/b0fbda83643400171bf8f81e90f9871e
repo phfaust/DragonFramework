@@ -9,7 +9,4 @@ public class StartState implements State {
 	      return "Start State";
 	   }
 	   
-	   public String in(String s){
-		   return "rcm " + s;
-	   }
 }

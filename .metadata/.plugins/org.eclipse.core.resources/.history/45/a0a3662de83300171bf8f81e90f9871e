@@ -24,9 +24,13 @@ public class ReadFileStrategy implements ReadStrategy{
 			while ((sCurrentLine = br.readLine()) != null) {
 				sCurrentLine = sCurrentLine.trim();
 				System.out.println(sCurrentLine);
+				StateContext state = Context.getState();
+				if(state.getState().toString().equals("Start State")){
+					sCurrentLine = "rcm " + sCurrentLine;
+				}
 				
 				try{
-					m.in(sCurrentLine);
+					m.df.in(sCurrentLine);
 				} catch (Exception e){
 					e.printStackTrace();
 				}

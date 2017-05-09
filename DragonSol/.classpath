@@ -5,6 +5,6 @@
 	<classpathentry exported="true" kind="lib" path="RoomCommandManager.jar"/>
 	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/WebDependenciesWithRest"/>
 	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/Framework"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/DragonFramework"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

@@ -1,15 +1,13 @@
 package app;
 
-public class StartState implements State {
+public class IdleState implements State {
+
 	   public void doAction(StateContext context) {
+	      System.out.println("Player is in stop state");
 	      context.setState(this);	
 	   }
 
 	   public String toString(){
-	      return "Start State";
+	      return "Idle State";
 	   }
-	   
-	   public String in(String s){
-		   return "rcm " + s;
-	   }
-}
+	}

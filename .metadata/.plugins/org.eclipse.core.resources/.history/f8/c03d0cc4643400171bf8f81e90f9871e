@@ -40,7 +40,7 @@ public class Main {
 		startgame();
 	}
 	
-	public void in(String s) throws Exception{
+	public void in(String s){
 		df.in(state.getState().in(s));
 	}
     

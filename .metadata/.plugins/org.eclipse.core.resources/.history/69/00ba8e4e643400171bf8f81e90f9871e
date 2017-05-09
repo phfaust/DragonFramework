@@ -8,11 +8,10 @@ public class Main {
 	boolean isRunning = false;	
 	Scanner sc = new Scanner(System.in);
 	DragonFramework df;
-	StateContext state;
 
 	public Main(){
 		df = new DragonFramework();
-		state = new StateContext();
+		StateContext state = new StateContext();
 		IdleState idle = new IdleState();
 		idle.doAction(state);
 		Context.setState(state);
@@ -38,10 +37,6 @@ public class Main {
 	 
 	public void run() throws Exception {
 		startgame();
-	}
-	
-	public void in(String s) throws Exception{
-		df.in(state.getState().in(s));
-	}
+	}	
     
 }
