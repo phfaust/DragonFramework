@@ -31,7 +31,7 @@ public class Main {
 	   
 	    	String method = sc.next();
 	    	
-	    	Object o = Class.forName("app.Read"+method+"Strategy").newInstance();
+	    	Object o = Class.forName("strategy.Read"+method+"Strategy").newInstance();
 	    	ReadContext rc = new ReadContext((ReadStrategy) o);	    	
 
 	    	System.out.println("WELCOME TO DRAGON GAME!");
