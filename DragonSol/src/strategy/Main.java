@@ -31,13 +31,20 @@ public class Main {
 	   
 	    	String method = sc.next();
 	    	
-	    	Object o = Class.forName("strategy.Read"+method+"Strategy").newInstance();
-	    	ReadContext rc = new ReadContext((ReadStrategy) o);	    	
-
-	    	System.out.println("WELCOME TO DRAGON GAME!");
-			System.out.println("You are trapped in this maze.\nSolve the puzzles and figure a way out before the dragon turns you in to ashes.");	
-			
-	    	rc.read(this);
+	    	
+//	    	not sure how to catch an input error here, seems like the convenstional try catch does not works
+	    	try{
+	    		Object o = Class.forName("strategy.Read"+method+"Strategy").newInstance();
+		    	ReadContext rc = new ReadContext((ReadStrategy) o);	
+		    	
+		    	System.out.println("WELCOME TO DRAGON GAME!");
+				System.out.println("You are trapped in this maze.\nSolve the puzzles and figure a way out before the dragon turns you in to ashes.");	
+				
+		    	rc.read(this);
+	    	} catch(Exception e){
+	    		System.out.println("Input Strategy: Entered Invalid Command");
+	    	}
+	    
 	}
 	 
 	public void run() throws Exception {
