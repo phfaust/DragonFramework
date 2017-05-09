@@ -1,7 +1,11 @@
-package app;
+package strategy;
 
 import java.util.Scanner;
+
+import app.Context;
 import framework.DragonFramework;
+import state.IdleState;
+import state.StateContext;
 
 public class Main {
 

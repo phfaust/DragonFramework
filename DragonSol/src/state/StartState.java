@@ -1,4 +1,4 @@
-package app;
+package state;
 
 public class StartState implements State {
 	   public void doAction(StateContext context) {

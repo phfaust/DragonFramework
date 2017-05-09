@@ -1,4 +1,4 @@
-package app;
+package strategy;
 
 public class ReadContext {
 	private ReadStrategy strategy;

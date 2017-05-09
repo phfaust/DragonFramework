@@ -5,10 +5,10 @@ import java.util.regex.Matcher;
 
 import app.Context;
 import app.Session;
-import app.StartState;
-import app.StateContext;
 import framework.CommandAnnotation;
 import framework.CommandHandler;
+import state.StartState;
+import state.StateContext;
 
 @CommandAnnotation(regEx="(?i)(start)")
 public class StartCommand implements CommandHandler {

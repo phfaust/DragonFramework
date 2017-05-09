@@ -1,4 +1,4 @@
-package app;
+package state;
 
 public class StateContext {
 	 private State state;
