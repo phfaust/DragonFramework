@@ -35,8 +35,6 @@ public class RegisterCommand implements CommandHandler {
 		} catch (NullPointerException ne){
 			User u = new User();
 			createUser(u, name, "Room1", 0);
-			s.setCurrentRoom(u.getRoom());
-			s.setGameState(u.getStatus());
 			System.out.println("Successfully created user " + name);	
 			
 		}
