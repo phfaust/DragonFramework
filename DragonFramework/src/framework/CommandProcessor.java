@@ -50,7 +50,8 @@ public class CommandProcessor {
 			}
 		}
 	
-		throw new RuntimeException("No regEx match");			
+//		throw new RuntimeException("No regEx match");
+		System.out.println("Please enter a valid command");
 		
 		
 		

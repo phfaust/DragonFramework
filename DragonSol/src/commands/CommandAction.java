@@ -19,9 +19,17 @@ public class CommandAction implements CommandHandler {
 		
 		Session s = Context.getSession();
 		
-		HashMap<String, Object> map = Context.getRcm().processRoom(s.getCurrentRoom(), s.getGameState(), action);
-		System.out.println(map.get("message"));
-		s.setGameState((int) map.get("status"));
+		try{
+			HashMap<String, Object> map = Context.getRcm().processRoom(s.getCurrentRoom(), s.getGameState(), action);
+			System.out.println(map.get("message"));
+			s.setGameState((int) map.get("status"));
+			
+			
+		} catch (Exception e){
+			System.out.println("Command Action: Invalid Commmand.");
+		}
+		
+	
 	}
 
 }

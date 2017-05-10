@@ -21,10 +21,12 @@ public class StartCommand implements CommandHandler {
 		start.doAction(state);
 		
 		Session s = Context.getSession();
+		String room = s.getCurrentRoom();
 		
 		try {
 			if(s.getUser().equals("")) throw new RuntimeException();
 			
+			System.out.println("You are currently in room: " + room);
 			HashMap<String, Object> map = Context.getRcm().processRoom(s.getCurrentRoom(), s.getGameState(), "checkRoom");
 			System.out.println(map.get("message"));
 			
