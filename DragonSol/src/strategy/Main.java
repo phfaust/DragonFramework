@@ -51,6 +51,7 @@ public class Main {
 	}
 	
 	public void in(String s) throws Exception{
+		System.out.println(state.getState().in(s));
 		df.in(state.getState().in(s));
 		
 		if((Context.getSession().getGameState() & 256) == 256) {
