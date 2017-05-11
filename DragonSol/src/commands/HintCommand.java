@@ -72,13 +72,7 @@ public class HintCommand implements CommandHandler {
 		System.out.println(hint_message);
 		
 */		
-		if(s.getCurrentRoom().equals("Room1")){
-			action = "checkRoom";
-		}
 		
-		
-		HashMap<String, Object> map = Context.getRcm().processRoom(room, s.getGameState(), action);
-		System.out.println(map.get("message"));
 	}
 	
 	
