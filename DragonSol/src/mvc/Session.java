@@ -1,4 +1,4 @@
-package app;
+package mvc;
 
 public class Session {
 	String currentRoom = "Room1";

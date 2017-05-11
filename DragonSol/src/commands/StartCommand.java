@@ -4,9 +4,9 @@ import java.util.HashMap;
 import java.util.regex.Matcher;
 
 import app.Context;
-import app.Session;
 import framework.CommandAnnotation;
 import framework.CommandHandler;
+import mvc.Session;
 import state.StartState;
 import state.StateContext;
 
@@ -25,7 +25,6 @@ public class StartCommand implements CommandHandler {
 		
 		try {
 			if(s.getUser().equals("")) throw new RuntimeException();
-			
 			System.out.println("You are currently in room: " + room);
 			HashMap<String, Object> map = Context.getRcm().processRoom(s.getCurrentRoom(), s.getGameState(), "checkRoom");
 			System.out.println(map.get("message"));

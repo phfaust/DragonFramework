@@ -1,5 +1,6 @@
 package app;
 
+import mvc.Session;
 import room.RoomCommandManager;
 import state.StateContext;
 

@@ -1,4 +1,4 @@
-package app;
+package mvc;
 
 public class SessionController {
 	private Session session;

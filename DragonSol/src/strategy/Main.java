@@ -25,25 +25,33 @@ public class Main {
 	private void startgame() throws Exception {
 	    	//INITIALIZE    	
 	    	isRunning = true;
-	    	System.out.println("Input read strategy: File/Cmd");
-	    	//ReadFileStrategy will read from file first and go back to cmd after
-	    	//ReadCmdStrategy will take input from command line
-	   
-	    	String method = sc.next();
 	    	
+	    	boolean incorrect = true;
+	    		
+	    		do{
+	    			System.out.println("Input read strategy: File/Cmd");
+			    	//ReadFileStrategy will read from file first and go back to cmd after
+			    	//ReadCmdStrategy will take input from command line
+			   
+			    	String method = sc.next();
+			    	method = method.substring(0, 1).toUpperCase() + method.substring(1).toLowerCase();
+			    	
+			    	try{
+			    		Object o = Class.forName("strategy.Read"+method+"Strategy").newInstance();
+				    	ReadContext rc = new ReadContext((ReadStrategy) o);	
+				    	
+				    	System.out.println("WELCOME TO DRAGON GAME!");
+						System.out.println("You are trapped in this maze.\nSolve the puzzles and figure a way out before the dragon turns you in to ashes.");	
+						
+				    	rc.read(this);
+				    	incorrect = false;
+			    	} catch(Exception e){
+			    		System.out.println("Input Strategy: Entered Invalid Command");
+			    		incorrect = true;
+			    	}
+	    		} while (incorrect);
 	    	
-	    	try{
-	    		Object o = Class.forName("strategy.Read"+method+"Strategy").newInstance();
-		    	ReadContext rc = new ReadContext((ReadStrategy) o);	
-		    	
-		    	System.out.println("WELCOME TO DRAGON GAME!");
-				System.out.println("You are trapped in this maze.\nSolve the puzzles and figure a way out before the dragon turns you in to ashes.");	
-				
-		    	rc.read(this);
-	    	} catch(Exception e){
-	    		System.out.println("Input Strategy: Entered Invalid Command");
-	    	}
-	    
+		    
 	}
 	 
 	public void run() throws Exception {
@@ -51,8 +59,8 @@ public class Main {
 	}
 	
 	public void in(String s) throws Exception{
-		System.out.println(state.getState().in(s));
-		df.in(state.getState().in(s));
+//		System.out.println(state.getState().in(s));
+		df.in(state.getState().in(s).toLowerCase());
 		
 		if((Context.getSession().getGameState() & 256) == 256) {
 			isRunning = false;

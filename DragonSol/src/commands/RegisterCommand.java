@@ -7,11 +7,11 @@ import org.springframework.stereotype.Component;
 
 import app.ApplicationContextHolder;
 import app.Context;
-import app.Session;
 import app.entity.User;
 import app.repositories.UserRepository;
 import framework.CommandAnnotation;
 import framework.CommandHandler;
+import mvc.Session;
 
 @Component
 @CommandAnnotation(regEx="(?i)register\\s+(\\w+)")

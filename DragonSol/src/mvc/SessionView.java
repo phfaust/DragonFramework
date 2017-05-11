@@ -1,4 +1,4 @@
-package app;
+package mvc;
 
 import hints.HintProcessor;
 

@@ -4,11 +4,11 @@ import java.util.HashMap;
 import java.util.regex.Matcher;
 
 import app.Context;
-import app.Session;
-import app.SessionController;
-import app.SessionView;
 import framework.CommandAnnotation;
 import framework.CommandHandler;
+import mvc.Session;
+import mvc.SessionController;
+import mvc.SessionView;
 
 
 @CommandAnnotation(regEx = "(?i)rcm\\s(?i)(hint)")

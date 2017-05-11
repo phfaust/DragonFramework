@@ -5,11 +5,11 @@ import java.util.HashMap;
 import java.util.List;
 
 import app.Context;
-import app.Session;
 import framework.CommandAnnotation;
 import framework.CommandHandler;
 import io.github.lukehutch.fastclasspathscanner.FastClasspathScanner;
 import io.github.lukehutch.fastclasspathscanner.scanner.ScanResult;
+import mvc.Session;
 
 public class HintProcessor {
 	

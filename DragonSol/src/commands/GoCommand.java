@@ -4,9 +4,9 @@ import java.util.HashMap;
 import java.util.regex.Matcher;
 
 import app.Context;
-import app.Session;
 import framework.CommandAnnotation;
 import framework.CommandHandler;
+import mvc.Session;
 
 
 //(?i) makes it insensitive

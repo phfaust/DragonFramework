@@ -6,11 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import app.ApplicationContextHolder;
 import app.Context;
-import app.Session;
 import app.entity.User;
 import app.repositories.UserRepository;
 import framework.CommandAnnotation;
 import framework.CommandHandler;
+import mvc.Session;
 
 
 //(?i) makes it insensitive
