@@ -29,7 +29,6 @@ public class GoCommand implements CommandHandler {
 		
 		HashMap<String, Object> map = Context.getRcm().processRoom(room, s.getGameState(), "checkRoom");
 		System.out.println(map.get("message"));
-		s.setGameState((int) map.get("status"));
 	}
 
 }

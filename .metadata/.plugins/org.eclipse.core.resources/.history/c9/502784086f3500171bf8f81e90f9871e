@@ -21,7 +21,7 @@ public class GoCommand implements CommandHandler {
 	@Override
 	public void process(Matcher matcher) throws Exception {
 		String room = matcher.group(1);
-		room = "R" + room.substring(1).toLowerCase();
+		room = "R" + room.substring(1);
 		System.out.println(room);
 		
 		Session s = Context.getSession();
@@ -29,7 +29,6 @@ public class GoCommand implements CommandHandler {
 		
 		HashMap<String, Object> map = Context.getRcm().processRoom(room, s.getGameState(), "checkRoom");
 		System.out.println(map.get("message"));
-		s.setGameState((int) map.get("status"));
 	}
 
 }

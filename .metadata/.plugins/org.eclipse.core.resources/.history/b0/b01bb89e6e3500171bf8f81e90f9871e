@@ -17,19 +17,20 @@ public class HintCommand implements CommandHandler {
 	@Override
 	public void process(Matcher matcher) throws Exception {
 		// TODO Auto-generated method stub
-
+		
+		String hint = matcher.group(1);
 		Session s = Context.getSession();
 		String room = s.getCurrentRoom();
 		String action = "look";
-		//System.out.println("You are currently in: " + room);
+		System.out.println("You are currently in: " + room);
 		
 		SessionView view = new SessionView();
 		SessionController controller = new SessionController(s, view);
 		
 		controller.updateSessionView();
 
-		//int gameState = s.getGameState();
-		//String hint_message = "Hint: ";
+		int gameState = s.getGameState();
+		String hint_message = "Hint: ";
 //		HINTS FOR USER
 /*		switch(room){
 			case "Room1":
@@ -72,9 +73,6 @@ public class HintCommand implements CommandHandler {
 		System.out.println(hint_message);
 		
 */		
-		if(s.getCurrentRoom().equals("Room1")){
-			action = "checkRoom";
-		}
 		
 		
 		HashMap<String, Object> map = Context.getRcm().processRoom(room, s.getGameState(), action);

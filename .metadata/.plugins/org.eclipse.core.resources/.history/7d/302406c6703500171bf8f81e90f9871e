@@ -32,6 +32,7 @@ public class Main {
 	    	String method = sc.next();
 	    	
 	    	
+//	    	not sure how to catch an input error here, seems like the convenstional try catch does not works
 	    	try{
 	    		Object o = Class.forName("strategy.Read"+method+"Strategy").newInstance();
 		    	ReadContext rc = new ReadContext((ReadStrategy) o);	
@@ -59,6 +60,7 @@ public class Main {
 			IdleState idle = new IdleState();
 			idle.doAction(state);
 			startgame();
+			//or load check point here?
 		}
 	}
     

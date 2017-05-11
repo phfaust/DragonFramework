@@ -5,8 +5,6 @@ import java.util.regex.Matcher;
 
 import app.Context;
 import app.Session;
-import app.SessionController;
-import app.SessionView;
 import framework.CommandAnnotation;
 import framework.CommandHandler;
 
@@ -17,21 +15,17 @@ public class HintCommand implements CommandHandler {
 	@Override
 	public void process(Matcher matcher) throws Exception {
 		// TODO Auto-generated method stub
-
+		
+		String hint = matcher.group(1);
 		Session s = Context.getSession();
 		String room = s.getCurrentRoom();
 		String action = "look";
-		//System.out.println("You are currently in: " + room);
-		
-		SessionView view = new SessionView();
-		SessionController controller = new SessionController(s, view);
-		
-		controller.updateSessionView();
+		System.out.println("You are currently in: " + room);
 
-		//int gameState = s.getGameState();
-		//String hint_message = "Hint: ";
+		int gameState = s.getGameState();
+		String hint_message = "Hint: ";
 //		HINTS FOR USER
-/*		switch(room){
+		switch(room){
 			case "Room1":
 				action = "checkRoom";
 				break;
@@ -71,14 +65,10 @@ public class HintCommand implements CommandHandler {
 		
 		System.out.println(hint_message);
 		
-*/		
-		if(s.getCurrentRoom().equals("Room1")){
-			action = "checkRoom";
-		}
 		
 		
-		HashMap<String, Object> map = Context.getRcm().processRoom(room, s.getGameState(), action);
-		System.out.println(map.get("message"));
+//		HashMap<String, Object> map = Context.getRcm().processRoom(room, s.getGameState(), action);
+//		System.out.println(map.get("message"));
 	}
 	
 	
