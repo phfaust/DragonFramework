@@ -28,12 +28,17 @@ public class SaveOrExitCommand implements CommandHandler {
 	@Override
 	public void process(Matcher matcher) throws Exception {
 
+		
 		String command = matcher.group(1);
 		
+	
 		Session s = Context.getSession();
 		User u = getUser(s.getUser());
 		saveUser(u, s.getCurrentRoom(), s.getGameState());
 		System.out.println("Saved current state to database.");
+		
+		
+		
 		
 		if(command.equalsIgnoreCase("exit")){
 			System.out.println("Game Ended!");
