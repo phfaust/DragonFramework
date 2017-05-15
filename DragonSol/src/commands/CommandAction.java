@@ -21,6 +21,10 @@ public class CommandAction implements CommandHandler {
 			action = "takeSword";
 		}
 		
+		if(action.equals("openchest")){
+			action = "openChest";
+		}
+		
 		Session s = Context.getSession();
 		
 		try{
